@@ -1,0 +1,85 @@
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+
+body {
+	background: $colorBG;
+}
+
+
+%container,
+.container {
+	margin: 0 auto;
+	width: $widthFull;
+}
+
+
+
+// Typography
+body {
+	font-family: $fontSansSerif;
+	color: $colorText;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: $fontSerif;
+	font-weight: 400;
+}
+
+%heading {
+	font-family: $fontSerif;
+	font-weight: 400;
+}
+
+h1,
+%h1 {
+	font-size: 2em;
+	line-height: 1.25;
+}
+
+h2,
+%h2 {
+	margin: 0.417em 0 0.833em;
+	font-size: 1.5em;
+	line-height: 1.25;
+}
+
+h3,
+%h3 {
+	margin: 0.8em 0 1em;
+	font-size: 1.25em;
+	line-height: 1.2;
+}
+
+h4,
+%h4 {
+	font-size: 1em;
+}
+
+h5,
+%h5 {
+	font-size: 0.875em;
+}
+
+h6,
+%h6 {
+	font-size: 0.75em;
+}
+
+
+a {
+	text-decoration: none;
+	color: $colorTertiary;
+
+	&:hover {
+		color: lighten($colorTertiary, 20%);
+	}
+
+	&:active {
+		color: invert($colorBG);
+	}
+}

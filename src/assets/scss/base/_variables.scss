@@ -1,0 +1,35 @@
+// Colors
+
+// Main colors
+$colorPrimary: #537514;
+$colorSecondary: #A77E6D;
+$colorTertiary: #4EA5D8;
+$colorWhite: #FFF;
+$colorGray: darken($colorWhite, 70%);
+$colorGrayLight: darken($colorWhite, 40%);
+
+// Backgrounds
+$colorBG: $colorWhite;
+$colorBGHeadline: lighten($colorSecondary, 15%);
+$colorBGFooter: $colorSecondary;
+
+// Borders
+$colorBorder: $colorGrayLight;
+
+// Text
+$colorText: #444;
+
+
+
+// Typography
+$fontSerif: Georgia, Times, "Times New Roman", serif;
+$fontSansSerif: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+
+// Sizes
+$widthFull: 960px;
+
+
+
+// Other
+$radiusDefault: 0;

@@ -1,0 +1,11 @@
+{
+  "name": "hhMap",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "normalize-scss": "~3.0.1",
+    "angular": "~1.2.18",
+	"angular-resource": "~1.2.18",
+    "angular-yandex-map": "~1.0.7"
+  }
+}
