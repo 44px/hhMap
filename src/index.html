@@ -6,11 +6,13 @@
 	<link rel="stylesheet" href="assets/css/main.css"/>
 </head>
 <body>
-	<ya-map class="map"
-			ya-zoom="12"
-			ya-controls="geolocationControl zoomControl"
-			ya-behaviors="drag scrollZoom multiTouch">
-	</ya-map>
+	<div class="map-container" ng-controller="MapCtrl">
+		<ya-map class="map"
+				ya-zoom="12"
+				ya-controls="geolocationControl zoomControl"
+				ya-behaviors="drag scrollZoom multiTouch">
+		</ya-map>
+	</div>
 
 	<!-- Scripts -->
 	<script src="vendor/angular/angular.js"></script>
