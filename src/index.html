@@ -9,8 +9,14 @@
 	<div class="map-container" ng-controller="MapCtrl">
 		<ya-map class="map"
 				ya-zoom="12"
+				ya-before-init="beforeInit()"
 				ya-controls="geolocationControl zoomControl"
 				ya-behaviors="drag scrollZoom multiTouch">
+			<ya-collection ya-options="{preset: 'islands#blueIcon'}">
+				<ya-geo-object ng-repeat="vacancy in foundVacancies"
+							   ya-source="vacancy">
+				</ya-geo-object>
+			</ya-collection>
 		</ya-map>
 	</div>
 

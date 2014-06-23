@@ -18,37 +18,44 @@ app.factory('Vacancies', function(API_URL, $resource) {
 
 
 
-app.controller('MapCtrl', function(Vacancies) {
+app.controller('MapCtrl', function($scope, Vacancies) {
 
-	// Get new
-	var vacancies = Vacancies.query();
-	vacancies.$promise.then(function(data) {
-		console.group('Latest @ hh.ru:');
-		data.items.forEach(function(elem) {
-			console.log(elem.id, elem.name);
+	$scope.foundVacancies = [];
+
+	// Search vacancies by query
+	$scope.search = function(query) {
+		// Get vacancies
+		var foundVacancies = Vacancies.get({
+			area: 2
 		});
-		console.groupEnd();
-	});
 
-
-	// Get one
-	var vacancy = Vacancies.get({id:10933376});
-	vacancy.$promise.then(function(data) {
-		console.log('Specific vacancy:');
-		console.log(data.id, data.name);
-	});
-
-
-	// Search
-	var foundVacancies = Vacancies.get({
-		area: 2
-	});
-
-	foundVacancies.$promise.then(function(data) {
-		console.group('Latest in SPB:');
-		data.items.forEach(function(elem) {
-			console.log(elem.id, elem.name);
+		foundVacancies.$promise.then(function(data) {
+			console.group('Latest in SPB by query ', query);
+			data.items.forEach(function(elem) {
+				//console.log(elem.address);
+				if (elem.address === null) {
+					//console.log(elem.id, '- no address -');
+				} else if (elem.address.lat && elem.address.lng) {
+					//console.log(elem.id, '- point: ', elem.address.lat, elem.address.lng);
+					$scope.foundVacancies.push({
+						geometry: {
+							type: 'Point',
+							coordinates: [elem.address.lng, elem.address.lat]
+						},
+						properties: {
+							balloonContentHeader: elem.name,
+							balloonContentBody: elem.address.street + ', ' + elem.address.building,
+							hintContent: elem.name
+						}
+					});
+				} else {
+					//console.log(elem.id, '- no coodrinates, use raw: ', elem.address.raw);
+					//TODO: try to geocode with yandex?
+				}
+			});
+			console.groupEnd();
 		});
-		console.groupEnd();
-	});
+	};
+
+	$scope.search();
 });
